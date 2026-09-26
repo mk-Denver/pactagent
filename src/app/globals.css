@@ -27,7 +27,76 @@ h1 em { color: var(--acid); font-style: normal; }
 .signal { display: flex; align-items: center; gap: 14px; color: #8e978f; font-size: 10px; letter-spacing: .18em; }
 .signal i { height: 1px; width: clamp(30px, 8vw, 120px); background: #4d584f; }
 .statusSection, .modelSection, .boundary { padding: clamp(64px, 9vw, 120px) clamp(24px, 6vw, 88px); }
-.sectionHeading { display: grid; grid-template-columns: 1.4fr .6fr; gap: 40px; align-items: end; margin-bottom: 64px; }
+.section { padding: clamp(48px, 7vw, 96px) clamp(24px, 6vw, 88px); }
+.sectionHeading { display: grid; grid-template-columns: 1.4fr .6fr; gap: 40px; align-items: end; margin-bottom: 48px; }
+.sectionNote { color: var(--muted); line-height: 1.6; margin: 0; font-size: 15px; }
+.inputHelp { color: var(--muted); font-size: 12px; display: block; margin-top: 4px; }
+.errorText { color: #c53030; font-size: 14px; margin: 8px 0; }
+.connectPanel { background: #e7e5dc; }
+.connectForm { display: flex; flex-direction: column; gap: 12px; max-width: 480px; }
+.connectForm label, .txnForm label { font-size: 13px; font-weight: 600; color: var(--ink); }
+.connectForm input, .txnForm input, .txnForm textarea {
+  padding: 10px 12px; border: 1px solid var(--line); border-radius: 4px; font-size: 14px; background: white; color: var(--ink);
+}
+.connectForm input:focus, .txnForm input:focus, .txnForm textarea:focus {
+  outline: 2px solid var(--acid); outline-offset: 1px;
+}
+.connectForm button, .txnForm button {
+  padding: 12px 24px; border: none; border-radius: 4px; font-size: 15px; font-weight: 700; cursor: pointer;
+  background: var(--ink); color: white; transition: opacity .15s;
+}
+.connectForm button:disabled, .txnForm button:disabled { opacity: .4; cursor: not-allowed; }
+.txnForm { display: flex; flex-direction: column; gap: 24px; max-width: 640px; }
+.txnForm fieldset { border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.txnForm legend { font-weight: 700; font-size: 14px; padding: 0 8px; }
+.txnForm textarea { resize: vertical; font-family: inherit; }
+.txnStatusSection { background: white; }
+.txnGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 0 0 16px; }
+.txnGrid > div { padding: 16px 20px; background: var(--paper); }
+.refNote { font-size: 13px; color: var(--muted); margin: 4px 0; }
+.refNote code { font-family: monospace; font-size: 12px; }
+.idempotencyNote { font-size: 13px; color: var(--muted); margin: 8px 0 16px; }
+.idempotencyNote code { font-family: monospace; }
+.idempotencyNote small { display: block; margin-top: 2px; }
+.stateBadge { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; text-transform: capitalize; }
+.dot.failed { background: #c53030; }
+.dot.reconciliation { background: #d8862c; box-shadow: 0 0 0 4px rgba(216, 134, 44, .13); }
+.dot.refunded { background: #3182ce; }
+.dot.settled { background: #63a900; box-shadow: 0 0 0 4px rgba(99, 169, 0, .13); }
+.actionRow { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+.actionRow button {
+  padding: 10px 20px; border: 1px solid var(--line); border-radius: 4px; font-size: 14px; font-weight: 600;
+  cursor: pointer; background: var(--paper); color: var(--ink); transition: opacity .15s;
+}
+.actionRow button:disabled { opacity: .4; cursor: not-allowed; }
+.actionRow button.reconcileBtn { border-color: #d8862c; color: #d8862c; }
+.actionRow button.closeBtn { border: none; background: transparent; color: var(--muted); }
+.decisionSection { background: #e7e5dc; }
+.decisionGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.decisionCard { padding: 24px; display: flex; flex-direction: column; gap: 8px; background: var(--paper); }
+.decisionCard strong { font-size: 20px; }
+.decisionCard small { color: var(--muted); }
+.policyChecks { list-style: none; padding: 0; margin: 8px 0; }
+.policyChecks li { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 14px; }
+.check { color: #63a900; font-weight: 700; }
+.trustSection { background: white; }
+.trustGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.trustCard { padding: 24px; background: var(--paper); }
+.trustCard.safe { background: #f0f9f0; }
+.trustCard.private { background: #f5f0f0; }
+.trustCard ul { list-style: none; padding: 0; margin: 12px 0 0; }
+.trustCard li { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 14px; }
+.lock { font-size: 16px; }
+.reportSection { background: #e7e5dc; }
+.lifecycleList { list-style: none; padding: 0; margin: 0 0 24px; border-top: 1px solid var(--line); }
+.lifecycleList li { display: grid; grid-template-columns: 32px 1fr auto; gap: 12px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.stepNum { color: var(--muted); font-size: 12px; font-weight: 700; }
+.lifecycleList code { font-family: monospace; font-size: 11px; color: var(--muted); }
+.reportGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.reportGrid > div { padding: 16px 20px; background: var(--paper); }
+.resultSection { background: white; }
+.resultContent { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 24px; }
+.resultContent pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-family: inherit; font-size: 15px; line-height: 1.6; }
 .eyebrow.dark { color: #667057; }
 h2 { font-size: clamp(38px, 5vw, 68px); }
 .sectionHeading > p { color: var(--muted); line-height: 1.6; margin: 0; }
@@ -67,6 +136,9 @@ footer { justify-content: space-between; padding: 30px clamp(24px, 6vw, 88px); c
   .statusGrid > div:nth-child(n+3) { border-top: 1px solid var(--line); }
   .statusGrid > div:nth-child(3) { padding-left: 0; }
   .boundary li { grid-template-columns: 34px 90px 1fr; }
+  .txnGrid, .reportGrid, .decisionGrid, .trustGrid { grid-template-columns: 1fr; }
+  .lifecycleList li { grid-template-columns: 24px 1fr; }
+  .lifecycleList code { display: none; }
 }
 @media (max-width: 480px) {
   .statusGrid { grid-template-columns: 1fr; }
